@@ -6,10 +6,22 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface NavBar {
+        "linkHoverColor": string;
+        "linkOne": string;
+        "linkThree": string;
+        "linkTwo": string;
+    }
     interface StandardText {
     }
 }
 declare global {
+    interface HTMLNavBarElement extends Components.NavBar, HTMLStencilElement {
+    }
+    var HTMLNavBarElement: {
+        prototype: HTMLNavBarElement;
+        new (): HTMLNavBarElement;
+    };
     interface HTMLStandardTextElement extends Components.StandardText, HTMLStencilElement {
     }
     var HTMLStandardTextElement: {
@@ -17,13 +29,21 @@ declare global {
         new (): HTMLStandardTextElement;
     };
     interface HTMLElementTagNameMap {
+        "nav-bar": HTMLNavBarElement;
         "standard-text": HTMLStandardTextElement;
     }
 }
 declare namespace LocalJSX {
+    interface NavBar {
+        "linkHoverColor"?: string;
+        "linkOne"?: string;
+        "linkThree"?: string;
+        "linkTwo"?: string;
+    }
     interface StandardText {
     }
     interface IntrinsicElements {
+        "nav-bar": NavBar;
         "standard-text": StandardText;
     }
 }
@@ -31,6 +51,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "nav-bar": LocalJSX.NavBar & JSXBase.HTMLAttributes<HTMLNavBarElement>;
             "standard-text": LocalJSX.StandardText & JSXBase.HTMLAttributes<HTMLStandardTextElement>;
         }
     }
