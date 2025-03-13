@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.adding-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+}
+
+button {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
