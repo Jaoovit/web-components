@@ -9,7 +9,7 @@ export namespace Components {
     interface AddingItems {
     }
     interface AlertButton {
-        "message": string;
+        "alertMessage": string;
     }
     interface NavBar {
         "linkHoverColor": string;
@@ -32,7 +32,7 @@ declare global {
         new (): HTMLAddingItemsElement;
     };
     interface HTMLAlertButtonElementEventMap {
-        "showAlert": any;
+        "sendAlert": string;
     }
     interface HTMLAlertButtonElement extends Components.AlertButton, HTMLStencilElement {
         addEventListener<K extends keyof HTMLAlertButtonElementEventMap>(type: K, listener: (this: HTMLAlertButtonElement, ev: AlertButtonCustomEvent<HTMLAlertButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -71,8 +71,8 @@ declare namespace LocalJSX {
     interface AddingItems {
     }
     interface AlertButton {
-        "message"?: string;
-        "onShowAlert"?: (event: AlertButtonCustomEvent<any>) => void;
+        "alertMessage"?: string;
+        "onSendAlert"?: (event: AlertButtonCustomEvent<string>) => void;
     }
     interface NavBar {
         "linkHoverColor"?: string;
