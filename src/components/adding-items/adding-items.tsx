@@ -1,4 +1,4 @@
-import { Component, Host, State, h } from '@stencil/core';
+import { Component, Host, State, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'adding-items',
@@ -6,6 +6,7 @@ import { Component, Host, State, h } from '@stencil/core';
   shadow: true,
 })
 export class AddingItems {
+  @State() stock: number = 10;
   @State() quantity: number = 0;
 
   increaseQuantity = (): void => {
@@ -17,6 +18,14 @@ export class AddingItems {
       this.quantity--;
     }
   };
+
+  @Watch('quantity')
+  handleQuantityChange() {
+    if (this.quantity > this.stock) {
+      window.alert(`We don't have more then ${this.stock} in stock`);
+      this.decreaseQuantity();
+    }
+  }
 
   render() {
     return (
